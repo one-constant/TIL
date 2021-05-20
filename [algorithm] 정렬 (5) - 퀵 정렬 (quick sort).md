@@ -5,7 +5,7 @@
 
 
 
-#### 서론
+### 서론
 
 이번에는 퀵 정렬에 대해서 알아본다. 
 
@@ -17,13 +17,17 @@
 
 
 
-#### 본론
+### 본론
 
 퀵 정렬의 아이디어는 다음과 같다.
 
-`하나씩 제 자리에 둔다.`
+`Divide and conquer!`
+
+이게 무슨 의미인지는 과정을 살펴보면 알 수 있다.
 
 
+
+#### 과정
 
 알고리즘에 따라 진행되는 과정은 다음과 같다.
 
@@ -75,6 +79,16 @@
 
 
 
+#### 시간복잡도
+
+왜 퀵 정렬은  $O(\textrm{N*logN})$ 의 시간복잡도를 가지는지 생각해보자.
+
+
+
+
+
+
+
 알고리즘을 구현한 코드는 아래와 같다.
 
 #### C
@@ -91,7 +105,7 @@ void quickSort(int arr[], int start, int end){
     big = start;  // 오른쪽으로 진행하며 pivot 값보다 큰 값을 찾는다.
     small = end;  // 왼쪽으로 진행하며 pivot 값보다 작은 값을 찾는다.
 
-    while(1){
+    while(pivot == arr[small]){  // pivot 값의 위치가 '작은 값'과 바뀐 경우 이번 회차의 정렬이 완료된 것이다. 
         while(pivot >= arr[big]){  // 오른쪽으로 진행할 때, pivot 값보다 작은 값은 그냥 넘긴다.
             big++;
             if(big > end){  // 주어진 구간[start, end]에서 pivot 값보다 큰 값이 없는 경우, big > end 가 된다.
@@ -116,12 +130,13 @@ void quickSort(int arr[], int start, int end){
             arr[start] = arr[small];
             arr[small] = pivot;
         }
-        if (pivot == arr[small]){  // 무슨 경우가 됐든, pivot 값의 위치가 바뀐 경우 이번 회차의 정렬이 완료된 것이다. 
-        	break;
-        }
     }
     quickSort(arr, start, small-1);  // 정렬된 pivot 값을 기준으로 앞쪽을 정렬한다.
     quickSort(arr, small+1, end); // 정렬된 pivot 값을 기준으로 뒷쪽을 정렬한다.
 }
 ```
+
+
+
+### 결론
 
