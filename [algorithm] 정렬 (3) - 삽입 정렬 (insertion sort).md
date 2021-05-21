@@ -72,3 +72,22 @@ void insertionSort(int arr[], int size){
 ```
 
 
+
+#### Python
+
+```python
+def insertionSort(arr, size):
+    temp = 0
+    for i in range(size-1):
+        j=i+1
+        while(arr[j-1]>arr[j]):
+            temp = arr[j-1]
+            arr[j-1] = arr[j]
+            arr[j] = temp
+            j -= 1
+            if(j<1): break
+
+    for i in range(size):
+        print(arr[i], end=' ')
+```
+
